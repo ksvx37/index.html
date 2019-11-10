@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>3교시 영어 영역</title>
+
+    <style media="screen">
+      .survey{
+        position: absolute;
+        display: box;
+        top: 10%;
+        left: 15%;
+        border: 1px solid #000;
+        border-radius: 25px;
+        border-style: none;
+        width:70%;
+        height: 80%;
+        background-color: #f2f2f2;
+
+      }
+      body{
+        background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(1.png);
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .pbtn{
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        text-decoration: none;
+        color: #000;
+        text-align: center;
+        padding: 5px 5px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        transition: 0.6s ease;
+        width: 120px;
+        background-color: #fff;
+      }
+
+      .pbtn:hover{
+        background-color: #000;
+        color: #fff;
+      }
+
+      .checking h1 {
+        font-size: 50px;
+        width: 100px;
+        padding: 10px 10px;
+        margin: 20px;
+
+      }
+
+      .checking form{
+        padding: 0px 50px;
+      }
+
+      #grade{
+        padding: 0px 50px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="survey">
+
+      <div id="age" class="checking">
+        <h1>학년</h1>
+        <script type="text/javascript">
+          function oneCheckbox(a){
+            var obj = document.getElementsByName("checkbox1");
+            for(var i=0; i<obj.length;i++){
+              if(obj[i]!=a){
+                obj[i].checked = false;
+              }
+            }
+          }
+
+        </script>
+
+        <form name="sendForm" action="index.html" method="get">
+          <input type="checkbox" name="checkbox1" value="a1" onclick="oneCheckbox(this)">고1
+          <input type="checkbox" name="checkbox1" value="a2" onclick="oneCheckbox(this)">고2
+          <input type="checkbox" name="checkbox1" value="a3" onclick="oneCheckbox(this)">고3
+
+        </form>
+      </div>
+
+      <div class="checking">
+        <h1>등급</h1>
+        <div id="grade">
+          3월
+          <select>
+            <option value="1등급">1등급</option>
+            <option value="2등급">2등급</option>
+            <option value="3등급">3등급</option>
+            <option value="4등급">4등급</option>
+            <option value="5등급">5등급</option>
+            <option value="6등급">6등급</option>
+            <option value="7등급">7등급</option>
+            <option value="8등급">8등급</option>
+            <option value="9등급">9등급</option>
+          </select>
+           6월
+           <select>
+             <option value="1등급">1등급</option>
+             <option value="2등급">2등급</option>
+             <option value="3등급">3등급</option>
+             <option value="4등급">4등급</option>
+             <option value="5등급">5등급</option>
+             <option value="6등급">6등급</option>
+             <option value="7등급">7등급</option>
+             <option value="8등급">8등급</option>
+             <option value="9등급">9등급</option>
+           </select>
+           9월
+           <select>
+             <option value="1등급">1등급</option>
+             <option value="2등급">2등급</option>
+             <option value="3등급">3등급</option>
+             <option value="4등급">4등급</option>
+             <option value="5등급">5등급</option>
+             <option value="6등급">6등급</option>
+             <option value="7등급">7등급</option>
+             <option value="8등급">8등급</option>
+             <option value="9등급">9등급</option>
+           </select>
+         </div>
+       </div>
+
+       <a href="#" class="pbtn">문제 풀러가기</a>
+
+    </div>
+
+  </body>
+</html>
