@@ -9,6 +9,7 @@
          }
 
          h1{
+           font-size: 50px;
            text-align: center;
            border-bottom: 1px solid black;
            margin: 0;
@@ -19,13 +20,155 @@
            text-align: center;
          }
 
+         .problem{
+           border-right: 1px solid black;
+         }
+
+         #grid{
+           display: grid;
+           grid-template-columns: 1fr 1fr;
+         }
+
+         .pbtn{
+           display: block;
+           position: absolute;
+           bottom: 10px;
+           right: 10px;
+           text-decoration: none;
+           color: #000;
+           text-align: center;
+           padding: 5px 5px;
+           border: 1px solid #000;
+           border-radius: 10px;
+           transition: 0.6s ease;
+           width: 120px;
+           background-color: #fff;
+         }
+
+         .pbtn:hover{
+           background-color: #000;
+           color: #fff;
+         }
 
     </style>
   </head>
   <body>
+
+    <div>
+      <div>
+        <span id="postTestMin">00</span><!-- 분 -->
+        <span>:</span>
+        <span id="postTestSec">00</span><!--초-->
+        <span>.</span>
+        <span id="postTestMilisec">00</span><!--밀리초-->
+      </div>
+
+      <div>
+        <ul id="testRecordList"></ul><!--중간 기록할 리스트-->
+      </div>
+
+      <div>
+        <button type="button" id="testStartBtn">START</button><!--시작/재시작/기록 버튼-->
+        <button type="button" id="testStopBtn">STOP</button><!--스톱 버튼-->
+      </div>
+    </div>
+
+    <script>
+      var stTime = 0
+      var endTime = 0
+      var timerStart
+
+      var min
+      var sec
+      var milisec
+
+      var startBtn = document.getElementById('testStartBtn')
+      var stopBtn = document.getElementById('testStopBtn')
+      var recordList = document.getElementById('testRecordList')
+
+      startBtn.addEventListener('click', function() {
+        // RECORD
+        if(this.innerText == 'RECORD' && milisec) {
+          console.log(min, sec, milisec)
+          var li = document.createElement('li')
+          li.style.color = "#fff"
+          li.innerText = min + ' : ' + sec + ' : ' + milisec
+          if(! recordList.firstChild) {
+            recordList.append(li)
+          } else {
+            recordList.insertBefore(li, recordList.firstChild)
+          }
+          return false
+        }
+        this.innerText = 'RECORD'
+
+        if(!stTime) {
+          stTime = Date.now() // 최초 START
+        } else {
+          stopBtn.innerText = 'STOP'
+          stTime += (Date.now() - endTime) // RESTART
+        }
+
+        timerStart = setInterval(function() {
+          var nowTime = new Date(Date.now() - stTime)
+
+          min = addZero(nowTime.getMinutes())
+          sec = addZero(nowTime.getSeconds())
+          milisec = addZero(Math.floor(nowTime.getMilliseconds() / 10))
+
+        document.getElementById('postTestMin').innerText = min
+        document.getElementById('postTestSec').innerText = sec
+        document.getElementById('postTestMilisec').innerText = milisec
+        }, 1)
+      })
+
+      stopBtn.addEventListener('click', function() {
+        if(timerStart) {
+          clearInterval(timerStart) // STOP
+
+          if(this.innerText == 'STOP') {
+            endTime = Date.now()
+            this.innerText = 'RESET'
+            startBtn.innerText = 'RESTART'
+          } else { // RESET
+            stTime = 0
+            min = 0
+            sec = 0
+            milisec = 0
+            document.getElementById('postTestMin').innerText = '00'
+            document.getElementById('postTestSec').innerText = '00'
+            document.getElementById('postTestMilisec').innerText = '00'
+            startBtn.innerText = 'START'
+            this.innerText = 'STOP'
+            timerStart = null
+            recordList.innerHTML = ''
+          }
+        }
+      })
+
+      function addZero(num) {
+        return (num < 10 ? '0'+num : ''+num)
+      }
+
+    </script>
+
+
   <h2>대학수학능력시 문제지</h2>
   <h1>영어 영역</h1>
 
+  <div id="grid">
+    <div class="problem">
+     <p>문제 들어갈 자리</p>
+     <img src="영어시험지_임시.png" alt="영어시험지_임시">
+    </div>
+
+    <div class="choice">
+     <p>보기 들어갈 자리</p>
+     <img src="영어보기_임시.png" alt="영어보기_임시">
+    </div>
+  </div>
+
+  <a href="종합편시험지.html" class="pbtn">다음 문제<br>풀러가기</a>
 
   </body>
 </html>
