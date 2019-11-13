@@ -93,7 +93,7 @@
         <h1>등급</h1>
         <div id="grade">
           3월
-          <select>
+          <select name = "3월" id = "three">
             <option value="1등급">1등급</option>
             <option value="2등급">2등급</option>
             <option value="3등급">3등급</option>
@@ -105,7 +105,7 @@
             <option value="9등급">9등급</option>
           </select>
            6월
-           <select>
+           <select name = "6월" id="six">
              <option value="1등급">1등급</option>
              <option value="2등급">2등급</option>
              <option value="3등급">3등급</option>
@@ -117,7 +117,7 @@
              <option value="9등급">9등급</option>
            </select>
            9월
-           <select>
+           <select name = "9월" id = "nine">
              <option value="1등급">1등급</option>
              <option value="2등급">2등급</option>
              <option value="3등급">3등급</option>
@@ -131,7 +131,12 @@
          </div>
        </div>
        <!--어떻게 하면 체크표시 해둔 것을 데이터로 받아올 수 있을까-->
-
+       var s = document.getElementByld("three");
+       var march = s.options[s.selectedindex].value;
+       var s = document.getElementByld("six");
+       var june = s.options[s.selectedindex].value;
+       var s = document.getElementByld("nine");
+       var sep = s.options[s.selectedindex].value;
        <a href="종합편시험지.html" class="pbtn">문제 풀러가기</a>
        <!--위에 체크를 하지 않으면 '문제풀러가기'버튼이 눌리지 않게하기-->
 
