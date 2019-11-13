@@ -86,7 +86,7 @@
       var stopBtn = document.getElementById('testStopBtn')
       var recordList = document.getElementById('testRecordList')
 
-      startBtn.addEventListener('click', function() {
+      
         // RECORD
         if(this.innerText == 'RECORD' && milisec) {
           console.log(min, sec, milisec)
@@ -99,7 +99,7 @@
             recordList.insertBefore(li, recordList.firstChild)
           }
           return false
-        }
+        
         this.innerText = 'RECORD'
 
         if(!stTime) {
